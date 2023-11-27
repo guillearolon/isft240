@@ -26,7 +26,7 @@
             {% endif %}
         {% endwith %}            
         <!-- Formulario para ingresar nombre, apellido y materia -->
-        <form class="mb-1" action="/inicio" method="POST">
+        <form class="mb-1" action="{{ url_for('index') }}" method="POST">
             <div class="row-1">
                 <div class="col">
                     <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
