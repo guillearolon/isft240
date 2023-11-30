@@ -48,7 +48,7 @@ def login():
         passw = request.form.get('passw')
 
         # Verifica si el usuario y contraseña coinciden con los registros
-        if any(entry[1] == usuario and entry[2] == passw for entry in log):
+        if any(entry[1] == usuario and entry[2] == passw for entry in log) and (usuario,passw) is not None:
             return redirect(url_for('index'))
         else:
             flash('Usuario y/o contraseña incorrectos', 'failed')
@@ -78,10 +78,10 @@ def index():
 
     return render_template('index.html', datos=datos)
 
-#manejo de errores
+#manejo de errores / página no encontrada
 @app.errorhandler(404)
 def error_pag(e):
-    return '<h1>Página no encontrada</h1>', 404
+    return '<h1 style="text-align: center; margin-top: 100px; font-size: 50px; font-family: Cambria;">ERROR 404: <br> Página no encontrada</h1>', 404
 
 # Botón para eliminar individualmente
 @app.route('/delete/<int:id>', methods=['GET'])
