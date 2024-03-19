@@ -57,7 +57,7 @@ def login():
     return render_template('login.html')        
 
 # Asistencia de alumnos
-@app.route('/in1cio78#2a!lumnos', methods=['POST', 'GET'])
+@app.route('/in1cio782a!lumnos', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
         if 'nombre' in request.form and 'apellido' in request.form and 'materia' in request.form:
