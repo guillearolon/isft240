@@ -57,7 +57,7 @@ def login():
     return render_template('login.html')        
 
 # Asistencia de alumnos
-@app.route('/in1cio782a!lumnos', methods=['POST', 'GET'])
+@app.route('/asistencias1', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
         if 'nombre' in request.form and 'apellido' in request.form and 'materia' in request.form:
@@ -118,5 +118,5 @@ def exportar():
 
     return response
 
-'''if __name__ == '__main__':
-    app.run(debug=True)'''
+if __name__ == '__main__':
+    app.run(debug=True)
