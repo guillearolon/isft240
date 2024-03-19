@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block title %}LOGIN - {% endblock %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="mb-1 alert alert-danger alert-dismissible fade show"  role="alert">
+          <p class="fs-4">{{ message }}</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}         
+
+<header class="m-5 border border-primary-info rounded-1 p-4">
+<h1 class="text-primary">LOGIN</h1>
+<form method="POST" action="{{ url_for('login') }}">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label fs-4">Usuario</label>
+      <input type="text" class="form-control" name="usuario" required>
+    </div>
+    <div class="mb-3">  
+      <label for="exampleInputPassword1" class="form-label fs-4">Contraseña</label>
+      <input type="password" class="form-control" name="passw" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</header>  
+{% endblock %}
+                
