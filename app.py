@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, Response
+from flask import Flask, render_template, request, redirect, url_for, flash, Response, session
 import sqlite3
 import pandas as pd
+import os
 
 app = Flask(__name__)
-app.secret_key = '15#6!#78!443¡'
+app.secret_key = os.urandom(24)
 
 def crear_db():
     conexion = sqlite3.connect('asistencia.db')
@@ -49,16 +50,26 @@ def login():
 
         # Verifica si el usuario y contraseña coinciden con los registros
         if any(entry[1] == usuario and entry[2] == passw for entry in log) and (usuario,passw) is not None:
+            #Capturamos la session del usuario en login
+            session['usuario'] = usuario
             return redirect(url_for('index'))
         else:
             flash('Usuario y/o contraseña incorrectos', 'failed')
             return redirect(url_for('login'))
+        
+    #valido si en la session se encuentra el usuario
+    if 'usuario' in session:
+        return redirect(url_for('index'))
             
     return render_template('login.html')        
 
 # Asistencia de alumnos
 @app.route('/asistencias1', methods=['POST', 'GET'])
 def index():
+    #si en la session no encuentra al usuario lo redirige a login
+    if 'usuario' not in session:
+        return redirect(url_for('login'))
+    
     if request.method == 'POST':
         if 'nombre' in request.form and 'apellido' in request.form and 'materia' in request.form:
             conexion = sqlite3.connect('asistencia.db')
