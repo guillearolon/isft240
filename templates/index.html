@@ -9,7 +9,13 @@
     <title>{% block title %} {% endblock %}Asistencia Alumnos</title>
 </head>
 <body>
+
     {% block body %}
+    <!--Botón para cerrar sesión debido a las cookies-->
+    <nav class="limpiar" style="margin-left: 2px;">
+        <a href="/session_pop" class="limpiar-all">Cerrar sesión</a>
+    </nav>
+
     <div class="container mt-2">
         <div class="contenedor-titulo">
             <h1 class="titulo">Asistencia Análisis de Sistemas 1° Año</h1>
@@ -51,6 +57,7 @@
             <!-- Botón adicional -->
             <a href="/delete_all" class="limpiar-all">Limpiar Todo</a>
         </nav>
+
         <!-- Tabla de datos -->
         <table class="table-custom">
             <thead>
