@@ -40,7 +40,7 @@ def crear_tb_login():
     if not usuario_existente:
         # Insertar datos solo si no hay registros
         cursor.execute(
-            'INSERT INTO usuario(user, password) VALUES("alumnos", "isft240")')
+            'INSERT INTO usuario(user, password) VALUES("root", "root")')
         conexion.commit()
 
 
@@ -150,9 +150,7 @@ def exportar():
     datos = pd.read_sql_query(
         "SELECT nombre, apellido, materia, fecha FROM alumnos", conexion)
 
-    fecha_actual = datetime.date.today()
-
-    hoja_excel = f'alumnos_{fecha_actual}.xlsx'
+    hoja_excel = 'asistencias-alumnos.xlsx'
     datos.to_excel(hoja_excel, index=False)
 
     with open(hoja_excel, 'rb') as hoja_excel:
@@ -162,7 +160,7 @@ def exportar():
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
         response.headers[
-            'Content-Disposition'] = f'attachment; filename = "{hoja_excel}"'
+            'Content-Disposition'] = 'attachment; filename = asistencias-alumnos.xlsx'
 
     return response
 
