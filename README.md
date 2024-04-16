@@ -1,4 +1,4 @@
-**Proyecto realizado para la toma de asistencias en ISFT N° 240.**
+*Proyecto realizado para la toma de asistencias en ISFT N° 240.*
 
 Para utilizar la app en local:
 1. Descargar el ZIP
@@ -6,5 +6,5 @@ Para utilizar la app en local:
 3. Sobre el directorio raiz isft240 ejecutar en la terminal --> python app.py
 
 Para la vista en producción:
-Se accede desde https://isft240alumnos.pythonanywhere.com/ | usuario y contraseña: **root**
-
+1. Se accede desde https://isft240alumnos.pythonanywhere.com/
+2. usuario y contraseña: **root**
