@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash, Res
 import sqlite3
 import pandas as pd
 import os
-import datetime
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -150,17 +149,17 @@ def exportar():
     datos = pd.read_sql_query(
         "SELECT nombre, apellido, materia, fecha FROM alumnos", conexion)
 
-    hoja_excel = 'asistencias-alumnos.xlsx'
+    hoja_excel = 'alumnos.xlsx'
     datos.to_excel(hoja_excel, index=False)
 
     with open(hoja_excel, 'rb') as hoja_excel:
         response = Response(
             hoja_excel.read(),
             content_type=
-            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            'application/vnd.openxmlformats- officedocument.spreadsheetml.sheet'
         )
         response.headers[
-            'Content-Disposition'] = 'attachment; filename = asistencias-alumnos.xlsx'
+            'Content-Disposition'] = 'attachment; filename = alumnos.xlsx'
 
     return response
 
